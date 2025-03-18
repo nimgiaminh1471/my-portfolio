@@ -1,0 +1,470 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #1d4ed8;
+  --text-color: #f3f4f6;
+  --light-text: #9ca3af;
+  --background: #111827;
+  --light-background: #1f2937;
+  --border-color: #374151;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply text-text bg-background;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  .navbar {
+    @apply fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border;
+  }
+
+  .nav-content {
+    @apply flex items-center justify-between h-16 px-4;
+  }
+
+  .nav-links {
+    @apply hidden md:flex space-x-8;
+  }
+
+  .nav-links a {
+    @apply text-text hover:text-primary transition-colors duration-300;
+  }
+
+  .hero {
+    @apply min-h-screen flex items-center justify-center pt-16;
+  }
+
+  .hero-content {
+    @apply flex flex-col md:flex-row items-center gap-8 text-center md:text-left;
+  }
+
+  .hero-text h1 {
+    @apply text-4xl md:text-5xl font-bold mb-4 text-text;
+  }
+
+  .hero-text h2 {
+    @apply text-xl md:text-2xl text-primary mb-4;
+  }
+
+  .hero-text p {
+    @apply text-text-light mb-8 max-w-2xl;
+  }
+
+  .cta-button {
+    @apply inline-block px-8 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition-colors duration-300;
+  }
+
+  .section {
+    @apply py-20;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 text-text;
+  }
+
+  .skills-grid {
+    @apply grid md:grid-cols-3 gap-8;
+  }
+
+  .skill-category {
+    @apply p-6 rounded-lg border border-border bg-background-light;
+  }
+
+  .skill-category h3 {
+    @apply text-xl font-semibold mb-4 text-text;
+  }
+
+  .skill-category ul {
+    @apply space-y-2 text-text-light;
+  }
+
+  .skill-category ul li {
+    @apply text-text-light;
+  }
+
+  .projects-grid {
+    @apply grid md:grid-cols-3 gap-8;
+  }
+
+  .project-card {
+    @apply p-6 rounded-lg border border-border bg-background-light hover:border-primary transition-all duration-300;
+  }
+
+  .project-card h3 {
+    @apply text-xl font-semibold mb-4 text-text;
+  }
+
+  .project-card p {
+    @apply text-text-light mb-4;
+  }
+
+  .project-tech {
+    @apply flex flex-wrap gap-2 mt-4;
+  }
+
+  .project-tech span {
+    @apply px-3 py-1 bg-primary/10 text-primary rounded-full text-sm;
+  }
+
+  .timeline {
+    @apply space-y-8;
+  }
+
+  .timeline-item {
+    @apply grid md:grid-cols-[150px_1fr] gap-8;
+  }
+
+  .timeline-date {
+    @apply font-semibold text-primary;
+  }
+
+  .timeline-content {
+    @apply border-l-2 border-border pl-6;
+  }
+
+  .timeline-content h3 {
+    @apply text-xl font-semibold text-text;
+  }
+
+  .timeline-content h4 {
+    @apply text-text-light mb-4;
+  }
+
+  .timeline-content ul {
+    @apply space-y-2 text-text-light;
+  }
+
+  .contact-content {
+    @apply grid md:grid-cols-2 gap-12;
+  }
+
+  .contact-info {
+    @apply space-y-6;
+  }
+
+  .contact-item {
+    @apply flex items-center gap-4 text-text-light;
+  }
+
+  .contact-item i {
+    @apply text-primary text-xl;
+  }
+
+  .contact-form {
+    @apply space-y-6;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    @apply w-full px-4 py-2 rounded-lg border border-border bg-background-light text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  .form-group textarea {
+    @apply resize-none;
+  }
+
+  .submit-button {
+    @apply px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors duration-300;
+  }
+
+  .footer {
+    @apply py-8 border-t border-border bg-background-light;
+  }
+
+  .social-links {
+    @apply flex justify-center space-x-6 mb-4;
+  }
+
+  .social-links a {
+    @apply text-text-light hover:text-primary transition-colors duration-300;
+  }
+
+  .mobile-menu {
+    @apply md:hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary;
+}
+
+/* Mobile menu animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-links.active {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Section transitions */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form focus states */
+input:focus, textarea:focus {
+  outline: none;
+  @apply border-primary ring-2 ring-primary/10;
+}
+
+/* Button hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Card hover effects */
+.hover\:-translate-y-1:hover {
+  transform: translateY(-4px);
+}
+
+/* Gradient backgrounds */
+@layer utilities {
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-primary {
+    color: var(--primary-color);
+  }
+
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Form Styles */
+.form-group input,
+.form-group textarea {
+  @apply w-full px-4 py-2 rounded-lg border border-border bg-background-light text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+}
+
+.form-group textarea {
+  @apply resize-none;
+}
+
+.submit-button {
+  @apply px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors duration-300;
+}
+
+/* Card Hover Effects */
+.project-card {
+  @apply p-6 rounded-lg border border-border bg-background-light hover:border-primary transition-all duration-300;
+}
+
+/* Gradient Backgrounds */
+.gradient-bg {
+  @apply bg-gradient-to-r from-primary to-secondary;
+}
+
+/* Hero Section */
+.hero {
+  @apply min-h-screen flex items-center justify-center pt-16;
+}
+
+.hero-content {
+  @apply flex flex-col md:flex-row items-center gap-8 text-center md:text-left;
+}
+
+.hero-text h1 {
+  @apply text-4xl md:text-5xl font-bold mb-4 text-text;
+}
+
+.hero-text h2 {
+  @apply text-xl md:text-2xl text-primary mb-4;
+}
+
+.hero-text p {
+  @apply text-text-light mb-8 max-w-2xl;
+}
+
+/* Section Styles */
+.section {
+  @apply py-20;
+}
+
+/* Skills Grid */
+.skills-grid {
+  @apply grid md:grid-cols-3 gap-8;
+}
+
+.skill-category {
+  @apply p-6 rounded-lg border border-border bg-background-light;
+}
+
+.skill-category h3 {
+  @apply text-xl font-semibold mb-4 text-text;
+}
+
+.skill-category ul {
+  @apply space-y-2 text-text-light;
+}
+
+.skill-category ul li {
+  @apply text-text-light;
+}
+
+/* Projects Grid */
+.projects-grid {
+  @apply grid md:grid-cols-3 gap-8;
+}
+
+.project-tech {
+  @apply flex flex-wrap gap-2 mt-4;
+}
+
+.project-tech span {
+  @apply px-3 py-1 bg-primary/10 text-primary rounded-full text-sm;
+}
+
+/* Timeline */
+.timeline {
+  @apply space-y-8;
+}
+
+.timeline-item {
+  @apply grid md:grid-cols-[150px_1fr] gap-8;
+}
+
+.timeline-date {
+  @apply font-semibold text-primary;
+}
+
+.timeline-content {
+  @apply border-l-2 border-border pl-6;
+}
+
+.timeline-content h3 {
+  @apply text-xl font-semibold text-text;
+}
+
+.timeline-content h4 {
+  @apply text-text-light mb-4;
+}
+
+.timeline-content ul {
+  @apply space-y-2 text-text-light;
+}
+
+/* Contact Section */
+.contact-content {
+  @apply grid md:grid-cols-2 gap-12;
+}
+
+.contact-info {
+  @apply space-y-6;
+}
+
+.contact-item {
+  @apply flex items-center gap-4 text-text-light;
+}
+
+.contact-item i {
+  @apply text-primary text-xl;
+}
+
+/* Footer */
+.footer {
+  @apply py-8 border-t border-border bg-background-light;
+}
+
+.social-links {
+  @apply flex justify-center space-x-6 mb-4;
+}
+
+.social-links a {
+  @apply text-text-light hover:text-primary transition-colors duration-300;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  @apply md:hidden;
+}
+
+/* CTA Button */
+.cta-button {
+  @apply inline-block px-8 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition-colors duration-300;
+} 
