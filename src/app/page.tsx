@@ -10,6 +10,7 @@ export default function Home() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,6 +34,10 @@ export default function Home() {
     }
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <main className="min-h-screen">
       {/* Navigation */}
@@ -46,11 +51,32 @@ export default function Home() {
             <a href="#experience" className="text-text hover:text-primary transition-colors">Experience</a>
             <a href="#contact" className="text-text hover:text-primary transition-colors">Contact</a>
           </div>
-          <button className="md:hidden">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <button 
+            className="md:hidden text-text hover:text-primary transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+          <div className="px-4 py-3 space-y-3 bg-background border-t border-border">
+            <a href="#about" className="block text-text hover:text-primary transition-colors py-2">About</a>
+            <a href="#skills" className="block text-text hover:text-primary transition-colors py-2">Skills</a>
+            <a href="#projects" className="block text-text hover:text-primary transition-colors py-2">Projects</a>
+            <a href="#experience" className="block text-text hover:text-primary transition-colors py-2">Experience</a>
+            <a href="#contact" className="block text-text hover:text-primary transition-colors py-2">Contact</a>
+          </div>
         </div>
       </nav>
 
