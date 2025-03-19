@@ -221,15 +221,27 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Work Experience</h2>
           <div className="max-w-3xl mx-auto space-y-8">
+          <div className="grid md:grid-cols-[150px_1fr] gap-8">
+              <div className="font-semibold text-primary">2024 - Present</div>
+              <div className="border-l-2 border-border-color pl-6">
+                <h3 className="text-xl font-semibold">Backend Developer</h3>
+                <h4 className="text-light-text mb-4">ECQ</h4>
+                <ul className="space-y-2 text-light-text">
+                  <li>Designed and implemented microservices architecture for scalable training environments</li>
+                  <li>Developed secure authentication and role-based access control system</li>
+                  <li>Created RESTful APIs for frontend communication and external tool integration</li>
+                  <li>Designed database schemas and optimized query performance</li>
+                </ul>
+              </div>
+            </div>
             <div className="grid md:grid-cols-[150px_1fr] gap-8">
-              <div className="font-semibold text-primary">2021 - Present</div>
+              <div className="font-semibold text-primary">2021 - 2024</div>
               <div className="border-l-2 border-border-color pl-6">
                 <h3 className="text-xl font-semibold">Backend Developer</h3>
                 <h4 className="text-light-text mb-4">TheGoodGuys</h4>
                 <ul className="space-y-2 text-light-text">
                   <li>Lead development of multiple enterprise-level projects</li>
                   <li>Implemented microservices architecture for scalable solutions</li>
-                  <li>Managed team of 12 developers</li>
                 </ul>
               </div>
             </div>
@@ -253,7 +265,6 @@ export default function Home() {
                 <ul className="space-y-2 text-light-text">
                   <li>Developed corporate websites using Laravel and WordPress</li>
                   <li>Built IoT product APIs and smart home controller system</li>
-                  <li>Managed team of 10 developers</li>
                 </ul>
               </div>
             </div>
